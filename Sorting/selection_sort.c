@@ -2,8 +2,9 @@
 #include <stdlib.h>
 #include <time.h>
 
-void sortArray(int **, int);
+void sortArray(int *, int);
 void swapItems(int *, int *);
+void traverseArray(int *, int);
 
 int main(int argc, char **argv)
 {
@@ -21,13 +22,13 @@ int main(int argc, char **argv)
         myArray[i] = rand() % 101;
     }
 
-    printf("- Before sorting: \n");
-    traverseArray(&myArray, size);
+    printf("\n- Before sorting: \n");
+    traverseArray(myArray, size);
 
-    sortArray(&myArray, size);
+    sortArray(myArray, size);
 
     printf("- After sorting: \n");
-    traverseArray(&myArray, size);
+    traverseArray(myArray, size);
 }
 
 void swapItems(int *a, int *b)
@@ -37,7 +38,7 @@ void swapItems(int *a, int *b)
     *b = temp;
 }
 
-void sortArray(int **myArray, int size)
+void sortArray(int myArray[], int size)
 {
     int MIN;
     for (int i = 0; i < size - 1; i++)
@@ -49,7 +50,17 @@ void sortArray(int **myArray, int size)
             {
                 MIN = j;
             }
-            swap(&myArray[i], &myArray[j]);
+            swapItems(&myArray[i], &myArray[j]);
         }
     }
+}
+
+void traverseArray(int myArray[], int size)
+{
+    printf("\033[1;32m[\033[0m");
+    for (int i = 0; i < size; i++)
+    {
+        printf(" %d ", myArray[i]);
+    }
+    printf("\033[1;32m]\033[0m\n");
 }
