@@ -10,7 +10,8 @@ int main(int argc, char **argv)
 {
     int *myArray;
     int size;
-    srand(time(NULL));
+
+    srand(time(NULL)); // Generates new random numbers instead of pseudo randoms.
 
     printf("[+] Enter sizeof array: ");
     scanf("%d", &size);
@@ -19,7 +20,7 @@ int main(int argc, char **argv)
 
     for (int i = 0; i < size; i++)
     {
-        myArray[i] = rand() % 101;
+        myArray[i] = rand() % 101; // Assigning random value to the array.
     }
 
     printf("\n- Before sorting: \n");
@@ -43,10 +44,10 @@ void sortArray(int myArray[], int size)
     int MIN;
     for (int i = 0; i < size - 1; i++)
     {
-        MIN = i;
+        MIN = i; // Assuming first one to be minimum first.
         for (int j = i + 1; j < size; j++)
         {
-            if (myArray[j] < myArray[MIN])
+            if (myArray[j] < myArray[MIN]) // If new smaller item found
             {
                 MIN = j;
             }
@@ -57,7 +58,7 @@ void sortArray(int myArray[], int size)
 
 void traverseArray(int myArray[], int size)
 {
-    printf("\033[1;32m[\033[0m");
+    printf("\033[1;32m[\033[0m"); // Escape sequences are for colors :p
     for (int i = 0; i < size; i++)
     {
         printf(" %d ", myArray[i]);
