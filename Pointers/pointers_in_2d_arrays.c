@@ -63,14 +63,14 @@ void testCase3() // Purely based in DMA and pointers
 
     for (int i = 0; i < x; i++)
     {
-        anArray[i] = malloc(y * sizeof(int));
+        *(anArray + i) = malloc(y * sizeof(int));
     }
 
     for (int i = 0; i < x; i++)
     {
         for (int j = 0; j < y; j++)
         {
-            anArray[i][j] = rand() % 10;
+            *(*(anArray + i) + j) = rand() % 10;
         }
     }
 
