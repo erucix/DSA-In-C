@@ -1,14 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void swap(int *x, int *y)
+{
+    int temp = *x;
+    *x = *y;
+    *y = temp;
+}
+
 void usingArray()
 {
-    int sparse[3][2] = {{2, 0}, {0, 5}, {0, 0}};
+    int x = 4, y = 2;
+    int sparse[4][2] = {{2, 3}, {0, 5}, {0, 0}, {21, 22}};
     int nonZero = 0;
 
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < x; i++)
     {
-        for (int j = 0; j < 2; j++)
+        for (int j = 0; j < y; j++)
         {
             if (sparse[i][j] != 0)
             {
@@ -18,13 +26,14 @@ void usingArray()
     }
 
     int newSparse[nonZero + 1][3];
-    newSparse[0][0] = 3;
-    newSparse[0][1] = 2;
+    newSparse[0][0] = x;
+    newSparse[0][1] = y;
     newSparse[0][2] = nonZero;
     int k = 1;
-    for (int i = 0; i < 3; i++)
+
+    for (int i = 0; i < x; i++)
     {
-        for (int j = 0; j < 2; j++)
+        for (int j = 0; j < y; j++)
         {
             if (sparse[i][j] != 0)
             {
@@ -35,8 +44,38 @@ void usingArray()
             }
         }
     }
+
     printf("R | C | N\n");
     printf("---------\n");
+
+    for (int i = 0; i <= nonZero; i++)
+    {
+        printf("%d   %d   %d\n", newSparse[i][0], newSparse[i][1], newSparse[i][2]);
+    }
+
+    for (int i = 1; i <= nonZero; i++)
+    {
+        swap(&newSparse[i][0], &newSparse[i][1]);
+    }
+
+    for (int i = 0; i <= nonZero; i++)
+    {
+        for (int j = 1; j < nonZero - i - 1; j++)
+        {
+            if (newSparse[j][0] < newSparse[j + 1][0])
+            {
+                swap(&newSparse[j][0], &newSparse[j + 1][0]);
+                swap(&newSparse[j][1], &newSparse[j + 1][1]);
+                swap(&newSparse[j][2], &newSparse[j + 1][2]);
+            }
+        }
+    }
+
+    printf("\nAfter swaps:\n\n");
+
+    printf("R | C | N\n");
+    printf("---------\n");
+
     for (int i = 0; i <= nonZero; i++)
     {
         printf("%d   %d   %d\n", newSparse[i][0], newSparse[i][1], newSparse[i][2]);
