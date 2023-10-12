@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "*.tcc": "c",
-        "random": "c"
+        "random": "c",
+        "stdio.h": "c"
     }
 }
