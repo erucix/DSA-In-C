@@ -87,9 +87,10 @@ void middle(Node **head)
     printf("\nMiddle: %d\n", slow->data);
 }
 
-void middle1(Node *head)
+void middle1(Node **shead)
 {
-    Node *temp = head;
+    Node *head = *shead;
+    Node *temp = *shead;
     int c = 0;
 
     while (head != NULL)
@@ -105,13 +106,42 @@ void middle1(Node *head)
     printf("\nMiddle: %d\n", temp->data);
 }
 
+void reverse(Node **head)
+{
+    Node *curr = *head;
+    Node *prev = NULL;
+    Node *next = NULL;
+
+    while (curr != NULL)
+    {
+        next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
+    }
+
+    *head = prev;
+}
+
+void rotate(Node **head, int step)
+{
+    Node *temp = *head;
+
+    for (int i = 0; i < step && temp != NULL; i++)
+    {
+        temp = temp->next;
+    }
+}
+
 int main(int argc, char **argv)
 {
     Node *head = NULL;
 
     randomize(&head, 10);
 
-    middle1(head);
+    traverse(&head);
+
+    reverse(&head);
 
     traverse(&head);
 }
