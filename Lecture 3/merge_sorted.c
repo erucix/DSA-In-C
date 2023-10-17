@@ -11,6 +11,7 @@ int main()
 
     int i = 0, j = 0, k = 0;
 
+    // [2,4,5,6,7,8]
     while (i < size1 && j < size2)
     {
         if (a1[i] < a2[j])
