@@ -5,18 +5,18 @@
 
 int stack[MAX];
 int top1 = -1;
-int top2 = MAX-1;
+int top2 = MAX;
 
 void push1(int data){
-	if(top1 == top2){
-		fprintf(stderr, "! Stack Overflow.\n");
+	if(top1 == top2 - 1){
+		fprintf(stderr, "Stack Overflow.\n");
 	} else {
 		stack[++top1] = data;
 	}
 }
 
 void push2(int data){
-	if(top1 == top2){
+	if(top1 == top2 - 1){
 		fprintf(stderr, "Stack Overflow.\n");
 	} else {
 		stack[--top2] = data;
